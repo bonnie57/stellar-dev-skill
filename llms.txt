@@ -38,7 +38,7 @@ stellar/stellar-dev-skill
 Clone the repo into your Codex skills directory:
 
 ```
-git clone https://github.com/stellar/stellar-dev-skill ~/.codex/skills/stellar-dev-skill
+git clone https://github.com/stellar/stellar-dev-skill ~/.agents/skills/stellar-dev-skill
 ```
 
 ### npx skills
