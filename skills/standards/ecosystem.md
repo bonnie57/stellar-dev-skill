@@ -121,6 +121,16 @@ Yield aggregation and vault infrastructure by PaltaLabs.
 - **Docs**: https://docs.defindex.io
 - **Features**: Automated rebalancing, vault management, Blend integration
 
+#### Spectra Finance
+Fixed-rate yield markets: splits a yield-bearing asset into a Principal Token (PT) and a Yield Token (YT). Live on Stellar mainnet; Stellar markets accept XLM and USDC and swap them into the market asset first.
+- **Use Case**: Lock a fixed rate (buy PT), trade future yield (YT)
+- **App**: https://app.spectra.finance/fixed-rate?network=stellar
+- **Docs**: https://docs.spectra.finance/docs/stellar
+- **Developer docs**: https://dev.spectra.finance/docs/stellar (Core v2 integration, router and limit orders, IBT wrappers, PT bridge, oracle)
+- **Mainnet contracts**: https://dev.spectra.finance/docs/technical-reference/deployed-contracts#stellar-mainnet (Registry, PT Factory, Router, Limit Order Engine, PT Bridge, PT Oracle Factory)
+- **Features**: Core v2 on Soroban, PT/YT limit orders, Blend wrapper (Blend positions as vault shares), PT bridge to EVM, deterministic zero-coupon-bond PT oracle
+- **Caveat**: PT market deployment is permissionless. Registry membership is discovery data, not an allowlist.
+
 ### Stablecoins & CDPs
 
 #### Orbit CDP Protocol
@@ -318,6 +328,16 @@ Cross-chain oracle with 20,000+ asset support.
 - **Website**: https://diadata.org
 - **Blog**: https://www.diadata.org/blog/post/soroban-stellar-oracle-dia/
 - **Features**: VWAPIR methodology, custom feeds
+
+#### Chainlink
+Data Feeds and Data Streams live on Stellar (October 2026).
+- **Docs**: https://docs.chain.link/data-feeds/stellar
+- **Feed IDs**: https://docs.chain.link/data-feeds/price-feeds/addresses?network=stellar (select Stellar)
+- **Proxy (mainnet)**: `CDQBHEUGLDHMSUHG4IH33RJBUTMNCZOT4JIAQR4WZFRDZW6DR6S32ZLZ`
+- **Proxy (testnet)**: `CBUF6IADAWPWIDWRTHJNINKXHG2UTIQ6TU2F2HRAXWAI7OT3KJPKK6O4`
+- **Interface**: not SEP-40. One proxy serves every feed; select a feed by its 32-byte `data_id`. `latest_round(data_id, decimals)` and `get_round(data_id, round_id, decimals)` return `Round { round_id, answer: I256, timestamp }`. Answers are stored at 18 decimals; pass `18` unless Chainlink approved a lower precision. Interface source: https://github.com/smartcontractkit/chainlink-stellar
+- **Example**: BTC/USD `data_id` `01a0b4d920000332000000000000000000000000000000000000000000000000` (same on testnet and mainnet)
+- **Data Streams**: pull model; verify signed reports on-chain with the Chainlink Verifier contract. Needs an allowlisted account. Guide: https://docs.chain.link/data-streams/tutorials/stellar-onchain-report-verification
 
 #### Band Protocol
 Cross-chain data oracle on BandChain.
