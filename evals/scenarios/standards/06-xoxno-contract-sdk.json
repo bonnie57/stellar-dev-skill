@@ -1,0 +1,11 @@
+{
+  "skills": ["standards"],
+  "query": "I'm writing a Soroban contract that supplies to XOXNO Lending. Is there a Rust crate for that, how do I test it, and can I use it in a commercial product?",
+  "expected_behavior": [
+    "Loads the standards skill and reads the XOXNO Lending entry in ecosystem.md rather than answering from memory",
+    "Names the `xoxno-contract-sdk` crate for contract-side calls and points to the Contract SDK guide, not the `@xoxno/sdk-js` TypeScript SDK",
+    "For tests, names the crate's `testutils` feature and `LendingFixture` instead of inventing a mock protocol",
+    "States that the `xoxno-contract-sdk` crate is MIT while the protocol contract source (`rs-lending-xlm`) uses PolyForm Noncommercial 1.0.0 (commercial use of that source needs a written agreement with XOXNO), does not apply the noncommercial terms to the crate itself, and says no audit report is listed",
+    "Routes deeper integration detail to skills/xoxno-lending/SKILL.md and does not link the retired dev quickstart page"
+  ]
+}
